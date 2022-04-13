@@ -1,29 +1,38 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:meals_app/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
+  final String _id;
+  final String _title;
+  final Color _color;
 
-  final String title;
-  final Color color;
+  CategoryItem(this._id, this._title, this._color);
 
-  CategoryItem(this.title, this.color);
+  void _selectCategory(BuildContext ctx) {
+    Navigator.of(ctx)
+        .pushNamed(CategoryMealsScreen.routeName, arguments: {"id": _id, "title": _title});
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(15),
-      child: Text(title,style: Theme.of(context).textTheme.titleLarge,),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            color.withOpacity(0.7),
-            color,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight
+    return InkWell(
+      onTap: () => _selectCategory(context),
+      borderRadius: BorderRadius.circular(12),
+      splashColor: Theme.of(context).primaryColor,
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        child: Text(
+          _title,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        borderRadius: BorderRadius.circular(12)
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              _color.withOpacity(0.7),
+              _color,
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+            borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
