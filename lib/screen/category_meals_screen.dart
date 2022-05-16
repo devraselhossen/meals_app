@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:meals_app/dummy_data.dart';
+import 'package:meals_app/data/dummy_data.dart';
+
+import '../data/dummy_data.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = "/category-meal";
