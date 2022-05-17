@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:meals_app/screen/meal_detail_screen.dart';
 
 import 'screen/category_meals_screen.dart';
 import 'screen/category_screen.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
       ),
       home: CategoryesScreen(),
       routes: {
-        CategoryMealsScreen.routeName: (_) => CategoryMealsScreen()
+        CategoryMealsScreen.routeName: (_) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (_) => MealDetailScreen()
       },
     );
   }
