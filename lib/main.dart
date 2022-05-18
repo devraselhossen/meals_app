@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import 'screen/category_meals_screen.dart';
-import 'screen/favourite_screen.dart';
 import 'screen/filter_screen.dart';
 import 'screen/meal_detail_screen.dart';
 import 'screen/tabs_screen.dart';
