@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:meals_app/screen/meal_detail_screen.dart';
 
 import 'screen/category_meals_screen.dart';
-import 'screen/category_screen.dart';
+import 'screen/favourite_screen.dart';
+import 'screen/filter_screen.dart';
+import 'screen/meal_detail_screen.dart';
+import 'screen/tabs_screen.dart';
 
 
 void main() {
@@ -34,10 +36,12 @@ class MyApp extends StatelessWidget {
           //bodyText2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
         ),
       ),
-      home: CategoryesScreen(),
+      // home: TabsScreen(),
       routes: {
+        '/': (ctx) => TabsScreen(),
         CategoryMealsScreen.routeName: (_) => CategoryMealsScreen(),
-        MealDetailScreen.routeName: (_) => MealDetailScreen()
+        MealDetailScreen.routeName: (_) => MealDetailScreen(),
+        FilterScreen.routeName: (_) => FilterScreen(),
       },
     );
   }
