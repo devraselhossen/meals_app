@@ -77,7 +77,7 @@ class MealItem extends StatelessWidget {
                   child: Image.network(
                     imageUrl,
                     height: 250,
-                    width: double.maxFinite,
+                    width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
