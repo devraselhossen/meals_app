@@ -45,13 +45,13 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
-            color: Colors.black26,
+            color: Theme.of(context).primaryColor,
             child: Text(
               "Cooking Up!",
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 28,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).canvasColor,
               ),
             ),
           ),

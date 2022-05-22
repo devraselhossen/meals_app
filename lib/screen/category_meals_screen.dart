@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/widget/meal_item.dart';
-
-import '../data/dummy_data.dart';
 import '../model/meal.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
@@ -66,7 +63,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
                 complexity: displayedMeals![index].complexity,
                 affordability: displayedMeals![index].affordability,
                 id: displayedMeals![index].id,
-                removeItem: _removeMeal,
               );
             }));
   }

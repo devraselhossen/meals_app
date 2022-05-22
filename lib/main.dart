@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
-
 import 'model/meal.dart';
 import 'screen/category_meals_screen.dart';
 import 'screen/filter_screen.dart';
@@ -28,14 +27,14 @@ class _MyAppState extends State<MyApp> {
     "vegartian": false
   };
 
-  List<FoodModel> availableMeals = FOOD_DATA;
-  // List<FoodModel> ?favouritesMeals;
+  List<FoodModel> _availableMeals = FOOD_DATA;
+  List<FoodModel> _favouritesMeals = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
       _filters = filterData;
 
-      availableMeals = FOOD_DATA.where(
+      _availableMeals = FOOD_DATA.where(
         (meal) {
           if (_filters["gluten"]! && !meal.isGlutenFree) {
             return false;
@@ -53,6 +52,25 @@ class _MyAppState extends State<MyApp> {
         },
       ).toList();
     });
+  }
+
+  void _toogleFavourite(String mealId) {
+    final existingMeal =
+        _favouritesMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingMeal >= 0) {
+      setState(() {
+        _favouritesMeals.removeAt(existingMeal);
+      });
+    }
+    else {
+      setState(() {
+        _favouritesMeals.add(FOOD_DATA.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool _isMealFavourite(String id) {
+    return _favouritesMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -77,11 +95,11 @@ class _MyAppState extends State<MyApp> {
       ),
       // home: TabsScreen(),
       routes: {
-        '/': (ctx) => TabsScreen(),
+        '/': (ctx) => TabsScreen(_favouritesMeals),
         CategoryMealsScreen.routeName: (_) =>
-            CategoryMealsScreen(availableMeals),
-        MealDetailScreen.routeName: (_) => MealDetailScreen(),
-        FilterScreen.routeName: (_) => FilterScreen(_setFilters,_filters),
+            CategoryMealsScreen(_availableMeals),
+        MealDetailScreen.routeName: (_) => MealDetailScreen(_toogleFavourite, _isMealFavourite),
+        FilterScreen.routeName: (_) => FilterScreen(_setFilters, _filters),
       },
     );
   }

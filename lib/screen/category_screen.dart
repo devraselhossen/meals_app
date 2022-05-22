@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
 import '../widget/category_item.dart';
 import '../data/dummy_data.dart';
 
